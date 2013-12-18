@@ -1,0 +1,11 @@
+---
+mobile_id: false
+host: {{ fqdn }}
+plugins:
+  public_collection: true
+  snapshot: true
+  channels: true
+  reminders: true
+  alerts: true
+  account_completeness: true
+  fred_api: true

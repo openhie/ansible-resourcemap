@@ -2,7 +2,8 @@ playbook-ohie-fr
 ================
 
 Ansible playbook for deploying the facility registry component of the [OpenHIE](http://ohie.org) stack.
-**Note:**For the debian package go [here.](https://bitbucket.org/instedd/resource_map/wiki/Install%20&%20Update)
+
+**Note:** For the debian package go [here.](https://bitbucket.org/instedd/resource_map/wiki/Install%20&%20Update)
 
 ## What it does
 * Installs prereq packages

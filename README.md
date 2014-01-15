@@ -29,4 +29,4 @@ Drop the -k if you are logging in with a public/private key.
 
 `ansible-playbook -i hosts site.yml`
 
-After this is complete(May take a few minutes) point your browser to http://ip_or_hostname and register a new accounut.
+After this is complete (May take a few minutes to finish) point your browser to http://ip_or_hostname and register a new account.

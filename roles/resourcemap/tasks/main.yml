@@ -12,6 +12,15 @@
    - git
    - curl
 
+- name: Ensure apache2 is not installed
+  apt: pkg={{ item }} state=absent
+  with_items:
+   - apache2
+   - apache2-mpm-prefork
+   - apache2-utils
+   - apache2.2-bin
+   - apache2.2-common
+
 - name: Add resourcemap apt key
   apt_key: url=http://apt.instedd.org/gpg.key state=present
 

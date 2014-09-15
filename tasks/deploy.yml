@@ -16,6 +16,7 @@
    - mail-transport-agent
    - nodejs
    - libmysqlclient-dev
+   - postfix
 
 - name: Deploy local deb
   apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"

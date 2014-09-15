@@ -17,6 +17,11 @@
    - libmysqlclient-dev
    - postfix
 
+- name: Bind postfix to locahost
+  lineinfile: line="inet_interfaces = 127.0.0.1"
+              dest=/etc/postfix/main.cf
+              state=present
+
 - name: Deploy local deb
   apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"
        state=installed

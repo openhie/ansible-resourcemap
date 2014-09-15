@@ -48,15 +48,12 @@
 - include: install.yml
   when: not resourcemap_deploy
 
-- name: Bind postfix to locahost
-  lineinfile: line="inet_interfaces = 127.0.0.1"
-              dest=/etc/postfix/main.cf
-              state=present
-  notify: restart postfix
-
 - name: Insert settings.yml
   template: src=settings.yml.j2
             dest=/etc/resourcemap/settings.yml
             owner=root
             group=resourcemap
             mode=0644
+
+- name: Start resourcemap
+  service: name=resourcemap state=started enabled=yes

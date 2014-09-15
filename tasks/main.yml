@@ -4,7 +4,7 @@
   when: resourcemap_deploy
 
 - name: Set hostname
-  hostname: name={{fqdn}}
+  hostname: name={{resourcemap_fqdn}}
 
 - name: Set hostname in /etc/hosts
   lineinfile: line="127.0.1.1 {{fqdn}}"

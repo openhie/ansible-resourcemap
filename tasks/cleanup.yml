@@ -1,0 +1,11 @@
+- name: Stop resourcemap
+  service: name=resourcemap state=stopped
+  ignore_errors: yes
+
+- name: Remove resource map
+  apt: name=resourcemap
+       state=absent
+       purge=yes
+
+- name: Remove left over deb files
+  shell: "chdir=/tmp rm -f *.deb"

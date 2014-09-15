@@ -1,0 +1,48 @@
+---
+# Clean stuff up for (re)deploy
+- include: cleanup.yml
+  when: resourcemap_deploy
+
+- name: Set hostname
+  hostname: name={{fqdn}}
+
+- name: Set hostname in /etc/hosts
+  lineinfile: line="127.0.1.1 {{fqdn}}"
+              dest=/etc/hosts
+              state=present
+              backup=yes
+
+- name: Add elasticsearch apt key
+  apt_key: keyserver=keyserver.ubuntu.com
+           id="561F9B9CAC40B2F7"
+           state=present
+
+- name: Add elastic search repo
+  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main'
+                  state=present
+                  update_cache=yes
+
+- name: Install elasticsearch
+  apt: name=elasticsearch
+       state=present
+
+- name: Install required packages
+  apt: pkg={{item}}
+       state=present
+  with_items:
+   - python-pycurl
+   - git
+   - curl
+
+- include: deploy.yml
+  when: resourcemap_deploy
+
+- include: install.yml
+  when: not resourcemap_deploy
+
+- name: Insert settings.yml
+  template: src=settings.yml.j2
+            dest=/etc/resourcemap/settings.yml
+            owner=root
+            group=resourcemap
+            mode=0644

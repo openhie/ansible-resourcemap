@@ -1,0 +1,12 @@
+- name: Add resourcemap apt key
+  apt_key: url=http://apt.instedd.org/gpg.key 
+           state=present
+
+- name: Add resoucemap repo
+  apt_repository: repo='deb http://apt.instedd.org/ instedd main' 
+                  state=present
+                  update_cache=yes
+
+- name: Install resourcemap
+  apt: pkg=resourcemap state=present
+

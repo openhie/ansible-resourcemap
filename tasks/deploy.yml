@@ -1,0 +1,22 @@
+- name: Copy over deb to /tmp
+  copy: src={{resourcemap_deb_loc}}
+        dest=/tmp
+        
+- name: Install dependencies for resourcemap
+  apt: name={{item}}
+       state=present
+  with_items:
+   - ruby1.9.1-dev
+   - mysql-server
+   - rake
+   - build-essential
+   - libcurl4-openssl-dev
+   - libssl-dev
+   - libpcre3-dev
+   - mail-transport-agent
+   - nodejs
+   - libmysqlclie
+
+- name: Deploy local deb
+  apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"
+       state=present

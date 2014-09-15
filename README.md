@@ -1,32 +1,38 @@
-playbook-ohie-fr
-================
+Role Name
+=========
 
-Ansible playbook for deploying the facility registry component of the [OpenHIE](http://ohie.org) stack.
+A brief description of the role goes here.
 
-**Note:** For the debian package go [here.](https://bitbucket.org/instedd/resource_map/wiki/Install%20&%20Update)
+Requirements
+------------
 
-## What it does
-* Installs prereq packages
-* Sets up resourcemap
+Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
-## Requirements
-* Ansible **1.2+** installed on client.
-* Debian based distro installed on target machine (tested with Ubuntu 12.04 LTS).
-* root username/password on target machine, ssh installed and running.
-* **If you do not having the required python packages uncomment the `# - bootstrap` line in the `site.yml` file.**
+Role Variables
+--------------
 
-## Vars and setup
-You will need to copy `group_vars/all.example` to `group_vars/all` then edit the variables in`group_vars/all`. Make sure to put in the correct fqdn or ip for this server.
+A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
-Also copy `hosts.example` to `hosts` and enter the ip or hostname of your server in place of the ip.
+Dependencies
+------------
 
-By default we try to login with root via ssh, if you have another user with sudo access on your server(e.g. AWS) edit `site.yml` and change the user and uncomment the sudo line.
+A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
-## Running the play
-`ansible-playbook -k -i hosts site.yml`
+Example Playbook
+----------------
 
-Drop the -k if you are logging in with a public/private key. 
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-`ansible-playbook -i hosts site.yml`
+    - hosts: servers
+      roles:
+         - { role: username.rolename, x: 42 }
 
-After this is complete (May take a few minutes to finish) point your browser to http://ip_or_hostname and register a new account.
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).

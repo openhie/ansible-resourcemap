@@ -17,6 +17,8 @@
    - libmysqlclient-dev
    - postfix
 
+- name: Set debconf selections
+  shell: "echo resourcemap resourcemap/newrelic/license_key string | debconf-set-selections && echo resourcemap resourcemap/http_port string 80 | debconf-set-selections && echo resourcemap resourcemap/settings/host string {{resourcemap_fqdn}} | debconf-set-selections"
 
 - name: Deploy local deb
   apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"

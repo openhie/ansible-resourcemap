@@ -1,3 +1,6 @@
 ---
 - name: restart elasticsearch
   service: name=elasticsearch state=restart
+
+- name: restart postfix
+  service: name=postfix state=restarted

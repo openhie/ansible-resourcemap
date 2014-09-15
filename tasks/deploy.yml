@@ -13,11 +13,10 @@
    - libcurl4-openssl-dev
    - libssl-dev
    - libpcre3-dev
-   - mail-transport-agent
    - nodejs
    - libmysqlclient-dev
    - postfix
 
 - name: Deploy local deb
   apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"
-       state=present
+       state=installed

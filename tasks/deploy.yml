@@ -15,7 +15,7 @@
    - libpcre3-dev
    - mail-transport-agent
    - nodejs
-   - libmysqlclie
+   - libmysqlclient-dev
 
 - name: Deploy local deb
   apt: deb="/tmp/{{resourcemap_deb_loc | basename}}"

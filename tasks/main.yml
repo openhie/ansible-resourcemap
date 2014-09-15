@@ -13,8 +13,7 @@
               backup=yes
 
 - name: Add elasticsearch apt key
-  apt_key: keyserver=keyserver.ubuntu.com
-           id="561F9B9CAC40B2F7"
+  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
            state=present
 
 - name: Add elastic search repo

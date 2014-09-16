@@ -17,6 +17,19 @@
    - libmysqlclient-dev
    - postfix
 
+- name: Add elasticsearch apt key
+  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+           state=present
+
+- name: Add elastic search repo
+  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main'
+                  state=present
+                  update_cache=yes
+
+- name: Install elasticsearch
+  apt: name=elasticsearch
+       state=present
+
 - name: Bind postfix to locahost
   lineinfile: line="inet_interfaces = 127.0.0.1"
               dest=/etc/postfix/main.cf

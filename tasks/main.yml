@@ -21,18 +21,11 @@
    - curl
    - openjdk-7-jre-headless
 
-- name: Add elasticsearch apt key
-  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-           state=present
+- include: deploy.yml
+  when: resourcemap_deploy
 
-- name: Add elastic search repo
-  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main'
-                  state=present
-                  update_cache=yes
-
-- name: Install elasticsearch
-  apt: name=elasticsearch
-       state=present
+- include: install.yml
+  when: not resourcemap_deploy
 
 - name: Insert elastic search config
   template: src=elasticsearch.yml.j2
@@ -41,12 +34,6 @@
             group=root
             mode=0644
   notify: restart elasticsearch
-
-- include: deploy.yml
-  when: resourcemap_deploy
-
-- include: install.yml
-  when: not resourcemap_deploy
 
 - name: Insert settings.yml
   template: src=settings.yml.j2

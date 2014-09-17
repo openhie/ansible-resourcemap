@@ -15,6 +15,7 @@
 - name: Install required packages
   apt: pkg={{item}}
        state=present
+       update_cache=yes
   with_items:
    - python-pycurl
    - git

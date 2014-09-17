@@ -43,5 +43,8 @@
             group=resourcemap
             mode=0644
 
+# Flush handlers
+- meta: flush_handlers
+
 - name: Start resourcemap
   service: name=resourcemap state=started enabled=yes

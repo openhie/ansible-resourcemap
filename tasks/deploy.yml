@@ -16,6 +16,7 @@
    - nodejs
    - libmysqlclient-dev
    - postfix
+   - libzmq-dev
 
 - name: Add elasticsearch apt key
   apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
